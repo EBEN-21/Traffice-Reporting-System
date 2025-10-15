@@ -16,20 +16,34 @@ const DriverDashboard = () => {
       navigate("/driver-login");
       return;
     }
+
     setDriver(storedDriver);
 
-    const allOffences = JSON.parse(localStorage.getItem("offences")) || [];
+    // ✅ Gather all offences from all officers
+    const allKeys = Object.keys(localStorage);
+    const allOffences = [];
+
+    allKeys.forEach((key) => {
+      if (key.startsWith("offences_")) {
+        const officerOffences = JSON.parse(localStorage.getItem(key)) || [];
+        allOffences.push(...officerOffences);
+      }
+    });
+
+    // ✅ Filter offences for this driver
     const driverOffences = allOffences.filter(
       (o) =>
-        o.plateNumber.toLowerCase() === storedDriver.plateNumber.toLowerCase() &&
-        o.driverName.toLowerCase() === storedDriver.driverName.toLowerCase()
+        o.plateNumber?.toLowerCase() ===
+          storedDriver.plateNumber?.toLowerCase() &&
+        o.driverName?.toLowerCase() === storedDriver.driverName?.toLowerCase()
     );
+
     setOffences(driverOffences);
   }, [navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem("loggedInDriver");
-    navigate("/driver-login");
+    navigate("/");
   };
 
   const toggleRow = (id) => {
@@ -41,7 +55,19 @@ const DriverDashboard = () => {
       o.id === id ? { ...o, status: "Paid" } : o
     );
     setOffences(updatedOffences);
-    localStorage.setItem("offences", JSON.stringify(updatedOffences));
+
+    // ✅ Update across all officer offence records
+    const allKeys = Object.keys(localStorage);
+    allKeys.forEach((key) => {
+      if (key.startsWith("offences_")) {
+        const list = JSON.parse(localStorage.getItem(key)) || [];
+        const updatedList = list.map((item) =>
+          item.id === id ? { ...item, status: "Paid" } : item
+        );
+        localStorage.setItem(key, JSON.stringify(updatedList));
+      }
+    });
+
     alert("Payment successful!");
   };
 
@@ -272,7 +298,7 @@ const DriverDashboard = () => {
           </div>
         ) : (
           <p className="text-gray-600 mt-8 text-center">
-            No offence records found.
+           No offences committed.
           </p>
         )}
       </main>

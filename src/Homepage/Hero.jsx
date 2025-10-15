@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import heropic1 from "../assets/homepage/image4.jpg";
+import heropic2 from "../assets/homepage/trafficlights.jpg";
+import heropic3 from "../assets/homepage/traffic.jpeg";
 
 const slides = [
   {
-    img: "/src/assets/homepage/image4.jpg",
+    img: heropic1,
     title: "Working Together for Safer Roads",
     description:
       "Our system bridges the gap between drivers and authorities for clear, fair traffic management.",
@@ -12,7 +15,7 @@ const slides = [
     buttonLink: "/about",
   },
   {
-    img: "/src/assets/homepage/trafficlights.jpg",
+    img: heropic2,
     title: "Obey Traffic Signals, Save Lives",
     description:
       "Your actions on the road matter — follow the rules, avoid fines, and stay safe.",
@@ -20,7 +23,7 @@ const slides = [
     buttonLink: "/traffic-rules",
   },
   {
-    img: "/src/assets/homepage/traffic.jpeg",
+    img: heropic3,
     title: "Building Smarter Roads Together",
     description:
       "Empowering officers and citizens with a digital platform for safer transportation.",
@@ -31,67 +34,83 @@ const slides = [
 
 const Hero = () => {
   const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
 
   useEffect(() => {
     const interval = setInterval(() => {
+      setDirection(1);
       setIndex((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
+  const variants = {
+    enter: (direction) => ({
+      x: direction > 0 ? "100%" : "-100%",
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      zIndex: 1,
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? "100%" : "-100%",
+      opacity: 0,
+      zIndex: 0,
+    }),
+  };
+
   return (
-    <motion.div
-      className="relative w-full h-[90vh] sm:h-[85vh] md:h-[95vh] overflow-hidden"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <AnimatePresence mode="wait">
+    <div className="relative w-full h-[90vh] sm:h-[85vh] md:h-[95vh] overflow-hidden">
+      <AnimatePresence custom={direction} mode="wait">
         <motion.div
           key={index}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{
+            x: { type: "spring", stiffness: 70, damping: 20 },
+            opacity: { duration: 0.6 },
+          }}
           className="absolute w-full h-full"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1 }}
           style={{
             backgroundImage: `url(${slides[index].img})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
-          {/* Dark overlay */}
+          {/* Overlay */}
           <div className="absolute inset-0 bg-black/50"></div>
 
           {/* Slide content */}
           <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 sm:px-6 md:px-12 max-w-[90%] md:max-w-2xl text-white">
-            {/* Title */}
             <motion.h1
               key={slides[index].title}
               initial={{ y: 40, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-2xl sm:text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg tracking-tight"
             >
               {slides[index].title}
             </motion.h1>
 
-            {/* Description */}
             <motion.p
               key={slides[index].description}
-              initial={{ y: 30, opacity: 0 }}
+              initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.3 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
               className="mt-3 sm:mt-4 text-sm sm:text-lg md:text-xl drop-shadow-md leading-relaxed max-w-lg"
             >
               {slides[index].description}
             </motion.p>
 
-            {/* Button */}
             <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 0.6 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             >
               <Link
                 to={slides[index].buttonLink}
@@ -103,7 +122,7 @@ const Hero = () => {
           </div>
         </motion.div>
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 };
 

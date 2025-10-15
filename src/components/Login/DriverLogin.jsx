@@ -24,22 +24,13 @@ const DriverLogin = () => {
       return;
     }
 
-    const offences = JSON.parse(localStorage.getItem("offences")) || [];
-    const driverOffences = offences.filter(
-      (o) =>
-        o.plateNumber.toLowerCase() === plateNumber.toLowerCase() &&
-        o.driverName.toLowerCase() === driverName.toLowerCase()
+    // ✅ Everyone can log in — even if no offences are found
+    localStorage.setItem(
+      "loggedInDriver",
+      JSON.stringify({ plateNumber, driverName })
     );
 
-    if (driverOffences.length > 0) {
-      localStorage.setItem(
-        "loggedInDriver",
-        JSON.stringify({ plateNumber, driverName })
-      );
-      navigate("/driver-dashboard");
-    } else {
-      setError("No records found for this driver.");
-    }
+    navigate("/driver-dashboard");
   };
 
   return (
@@ -50,12 +41,10 @@ const DriverLogin = () => {
         transition={{ duration: 0.5 }}
         className="bg-white shadow-lg rounded-xl w-full max-w-sm sm:max-w-md p-5 sm:p-8"
       >
-        {/* Title */}
         <h1 className="text-xl sm:text-2xl font-bold text-green-700 text-center mb-5 sm:mb-6">
           Driver Login
         </h1>
 
-        {/* Error */}
         {error && (
           <motion.div
             initial={{ opacity: 0, y: -10 }}
@@ -66,9 +55,7 @@ const DriverLogin = () => {
           </motion.div>
         )}
 
-        {/* Form */}
         <form onSubmit={handleLogin} className="space-y-3 sm:space-y-4">
-          {/* Plate Number */}
           <div>
             <label className="block text-gray-700 text-sm font-medium mb-1">
               Plate Number
@@ -84,7 +71,6 @@ const DriverLogin = () => {
             />
           </div>
 
-          {/* Driver Name */}
           <div>
             <label className="block text-gray-700 text-sm font-medium mb-1">
               Driver Name
@@ -100,7 +86,6 @@ const DriverLogin = () => {
             />
           </div>
 
-          {/* Login Button */}
           <button
             type="submit"
             className="w-full bg-green-700 text-white py-2 rounded font-medium hover:bg-green-800 transition text-sm"
@@ -109,7 +94,6 @@ const DriverLogin = () => {
           </button>
         </form>
 
-        {/* Footer */}
         <p className="text-center text-gray-500 text-xs mt-4">
           © {new Date().getFullYear()} Traffic Safety System
         </p>

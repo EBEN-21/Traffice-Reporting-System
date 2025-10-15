@@ -11,16 +11,18 @@ const OfficerDash = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
+ useEffect(() => {
     const storedOfficer = JSON.parse(localStorage.getItem("loggedInOfficer"));
     if (storedOfficer) {
       setOfficerName(storedOfficer.name || storedOfficer.fullName || "Officer");
+
+      // ✅ Load this officer's offences only
+      const officerKey = `offences_${storedOfficer.id || storedOfficer.name || "unknown"}`;
+      const storedOffences = JSON.parse(localStorage.getItem(officerKey)) || [];
+      setOffences(storedOffences);
     } else {
       navigate("/");
     }
-
-    const storedOffences = JSON.parse(localStorage.getItem("offences")) || [];
-    setOffences(storedOffences);
   }, [navigate]);
 
   const toggleExpand = (id) => {
@@ -57,7 +59,7 @@ const OfficerDash = () => {
         {/* ===== Mobile Header with Dropdown ===== */}
         <div className="flex justify-between items-center mb-6 md:hidden relative">
           <h1 className="text-lg font-bold text-green-800">
-            Hi, <span className="text-green-600">{officerName}</span>
+            Hello, <span className="text-green-600">{officerName}</span>
           </h1>
 
           <button
@@ -112,13 +114,8 @@ const OfficerDash = () => {
         {/* ===== Desktop Header ===== */}
         <div className="hidden md:flex justify-between items-center mb-10">
           <h1 className="text-3xl font-bold text-green-800">
-            Welcome, <span className="text-green-600">{officerName}</span>
+            Hello, <span className="text-green-600">{officerName}</span>
           </h1>
-          <button className="w-12 h-12 rounded-full bg-green-700 text-white flex items-center justify-center shadow-md hover:bg-green-800 transition">
-            <span className="text-lg font-bold">
-              {officerName ? officerName.charAt(0).toUpperCase() : "O"}
-            </span>
-          </button>
         </div>
 
         {/* ===== Offence Records Table ===== */}

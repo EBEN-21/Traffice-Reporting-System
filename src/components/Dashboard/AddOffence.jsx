@@ -47,15 +47,26 @@ const AddOffence = () => {
       return;
     }
 
-    const existingOffences = JSON.parse(localStorage.getItem("offences")) || [];
+    // ✅ Get the logged-in officer info
+    const officer = JSON.parse(localStorage.getItem("loggedInOfficer"));
+    if (!officer) {
+      alert("No officer logged in!");
+      return;
+    }
+
+    // ✅ Use unique key for each officer
+    const officerKey = `offences_${officer.id || officer.name || "unknown"}`;
+    const existingOffences = JSON.parse(localStorage.getItem(officerKey)) || [];
+
     const newOffence = {
       id: Date.now(),
       ...formData,
       fineAmount: parseFloat(formData.fineAmount),
+      officerId: officer.id || officer.name,
     };
 
     const updatedOffences = [newOffence, ...existingOffences];
-    localStorage.setItem("offences", JSON.stringify(updatedOffences));
+    localStorage.setItem(officerKey, JSON.stringify(updatedOffences));
 
     setSuccessMessage("✅ Offence record successfully added!");
 
@@ -84,12 +95,6 @@ const AddOffence = () => {
         <h1 className="text-xl sm:text-2xl font-bold text-green-700 text-center sm:text-left">
           Add New Offence
         </h1>
-        <button
-          onClick={() => navigate("/officer-dashboard")}
-          className="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition text-sm sm:text-base w-full sm:w-auto"
-        >
-          ← Back to Dashboard
-        </button>
       </div>
 
       {/* Success Message */}
