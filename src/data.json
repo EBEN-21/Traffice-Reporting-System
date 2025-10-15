@@ -1,0 +1,114 @@
+[
+  {
+    "id": 1,
+    "plateNumber": "ABC123XYZ",
+    "driverName": "John Doe",
+    "offenceType": "Over Speeding",
+    "fineAmount": 15000,
+    "status": "Unpaid"
+  },
+  {
+    "id": 2,
+    "plateNumber": "LAG234KJA",
+    "driverName": "Emeka Okafor",
+    "offenceType": "Driving Without Seatbelt",
+    "fineAmount": 5000,
+    "status": "Paid"
+  },
+  {
+    "id": 3,
+    "plateNumber": "KAN455BWR",
+    "driverName": "Aisha Bello",
+    "offenceType": "Expired Vehicle Papers",
+    "fineAmount": 10000,
+    "status": "Unpaid"
+  },
+  {
+    "id": 4,
+    "plateNumber": "ENU789BOS",
+    "driverName": "Chinedu Eze",
+    "offenceType": "Driving Without License",
+    "fineAmount": 20000,
+    "status": "Unpaid"
+  },
+  {
+    "id": 5,
+    "plateNumber": "PHC112ABC",
+    "driverName": "Boma Jack",
+    "offenceType": "Over Speeding",
+    "fineAmount": 15000,
+    "status": "Paid"
+  },
+  {
+    "id": 6,
+    "plateNumber": "IBA340LAG",
+    "driverName": "Segun Adewale",
+    "offenceType": "Wrong Parking",
+    "fineAmount": 3000,
+    "status": "Paid"
+  },
+  {
+    "id": 7,
+    "plateNumber": "ABJ999KLM",
+    "driverName": "Maryam Yusuf",
+    "offenceType": "Traffic Light Violation",
+    "fineAmount": 10000,
+    "status": "Unpaid"
+  },
+  {
+    "id": 8,
+    "plateNumber": "OGU321FGH",
+    "driverName": "Olamide Bakare",
+    "offenceType": "Overloading Vehicle",
+    "fineAmount": 8000,
+    "status": "Paid"
+  },
+  {
+    "id": 9,
+    "plateNumber": "KAD678PQR",
+    "driverName": "Hassan Ibrahim",
+    "offenceType": "Drunk Driving",
+    "fineAmount": 25000,
+    "status": "Unpaid"
+  },
+  {
+    "id": 10,
+    "plateNumber": "LAG202BOS",
+    "driverName": "Tunde Ajayi",
+    "offenceType": "Over Speeding",
+    "fineAmount": 15000,
+    "status": "Unpaid"
+  },
+  {
+    "id": 11,
+    "plateNumber": "ABJ777OPQ",
+    "driverName": "Grace Uche",
+    "offenceType": "Expired Vehicle Papers",
+    "fineAmount": 10000,
+    "status": "Paid"
+  },
+  {
+    "id": 12,
+    "plateNumber": "PHC404MNO",
+    "driverName": "Kelechi Nwosu",
+    "offenceType": "Driving Without License",
+    "fineAmount": 20000,
+    "status": "Unpaid"
+  },
+  {
+    "id": 13,
+    "plateNumber": "KAN321HJK",
+    "driverName": "Aliyu Musa",
+    "offenceType": "Traffic Light Violation",
+    "fineAmount": 10000,
+    "status": "Paid"
+  },
+  {
+    "id": 14,
+    "plateNumber": "ENU876XYZ",
+    "driverName": "Ngozi Obi",
+    "offenceType": "Drunk Driving",
+    "fineAmount": 25000,
+    "status": "Unpaid"
+  }
+]

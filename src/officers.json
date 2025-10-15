@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Officer Chinedu Okeke",
+    "email": "chinedu.okeke@traffic.gov.ng",
+    "password": "officer123",
+    "rank": "Senior Road Marshal"
+  },
+  {
+    "id": 2,
+    "name": "Officer Aisha Bello",
+    "email": "aisha.bello@traffic.gov.ng",
+    "password": "securepass",
+    "rank": "Traffic Inspector"
+  },
+  {
+    "id": 3,
+    "name": "Officer Tunde Balogun",
+    "email": "tunde.balogun@traffic.gov.ng",
+    "password": "tunde789",
+    "rank": "Road Marshal Assistant I"
+  },
+  {
+    "id": 4,
+    "name": "Officer Grace Nwachukwu",
+    "email": "grace.nwachukwu@traffic.gov.ng",
+    "password": "grace456",
+    "rank": "Traffic Sergeant"
+  },
+  {
+    "id": 5,
+    "name": "Officer Musa Abdullahi",
+    "email": "musa.abdullahi@traffic.gov.ng",
+    "password": "musa321",
+    "rank": "Senior Traffic Warden"
+  }
+]

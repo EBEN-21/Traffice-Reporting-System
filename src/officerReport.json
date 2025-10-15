@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "plateNumber": "ABC123XYZ",
+    "driverName": "John Doe",
+    "offenceType": "Over Speeding",
+    "fineAmount": 15000
+
+  },
+  {
+    "id": 2,
+    "plateNumber": "LAG234KJA",
+    "driverName": "Emeka Okafor",
+    "offenceType": "Driving Without Seatbelt",
+    "fineAmount": 5000
+    
+  },
+  {
+    "id": 3,
+    "plateNumber": "KAN455BWR",
+    "driverName": "Aisha Bello",
+    "offenceType": "Expired Vehicle Papers",
+    "fineAmount": 10000
+
+  },
+  {
+    "id": 4,
+    "plateNumber": "ENU789BOS",
+    "driverName": "Chinedu Eze",
+    "offenceType": "Driving Without License",
+    "fineAmount": 20000
+
+  },
+  {
+    "id": 5,
+    "plateNumber": "PHC112ABC",
+    "driverName": "Boma Jack",
+    "offenceType": "Over Speeding",
+    "fineAmount": 15000
+    
+  },
+  {
+    "id": 6,
+    "plateNumber": "IBA340LAG",
+    "driverName": "Segun Adewale",
+    "offenceType": "Wrong Parking",
+    "fineAmount": 3000
+    
+  },
+  {
+    "id": 7,
+    "plateNumber": "ABJ999KLM",
+    "driverName": "Maryam Yusuf",
+    "offenceType": "Traffic Light Violation",
+    "fineAmount": 10000
+
+  },
+  {
+    "id": 8,
+    "plateNumber": "OGU321FGH",
+    "driverName": "Olamide Bakare",
+    "offenceType": "Overloading Vehicle",
+    "fineAmount": 8000
+
+  }
+]
